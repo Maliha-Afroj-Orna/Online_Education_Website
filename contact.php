@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Contact</title>
+	<link rel="icon" type="image/x-icon" href="contact.png">
 
 	<!-- font awesome cnd link -->
 	<link rel="stylesheet" type="text/css"
@@ -22,19 +23,19 @@
 
 
 	<!-- header section starts -->
-	<header class="header">
-		<a href="home.html" class="logo"><i class="fa-solid fa-user-graduate"></i>OnlineEdu<a>
+	<header style="background: #F1E1F5;" class="header">
+		<a href="index.php" class="logo"><i class="fa-solid fa-user-graduate"></i>OnlineEdu<a>
 
 				<nav class="navbar">
 					<div id="close-navbar" class="fas fa-times"></div>
-					<a href="home.html">Home</a>
+					<a href="index.php">Home</a>
 					<a href="about.html">About</a>
 					<a href="courses.html">Courses</a>
-					<a href="contact.html">Contact</a>
+					<a href="contact.php">Contact</a>
 				</nav>
 
 				<div class="icons">
-					<div id="account-btn" class="fa-solid fa-user-graduate"></div>
+
 					<div id="menu-btn" class="fas fa-bars"></div>
 				</div>
 	</header>
@@ -63,7 +64,7 @@
 			<input type="submit" value="login now" class="btn" name="">
 		</form>
 
-		<form class="register-form" action="">
+		<form class="register-form" action="" method="post">
 			<h3>register now</h3>
 			<input type="email" placeholder="Enter Your Email" class="box" name="">
 			<input type="password" placeholder="Enter Your Password" class="box" name="">
@@ -85,7 +86,7 @@
 
 	<section class="heading-link">
 		<h3>contact us</h3>
-		<p><a href="home.html">home</a> / contact</p>
+		<p><a href="index.php">home</a> / contact</p>
 	</section>
 
 
@@ -131,12 +132,12 @@
 				<img src="images/contact-img.png" alt="">
 			</div>
 
-			<form action="">
-				<h3>send us a message</h3>
-				<input type="text" placeholder="Your Name" class="box">
-				<input type="email" placeholder="Your Email" class="box">
-				<input type="number" placeholder="Your Phone" class="box">
-				<textarea name="" class="box" placeholder="Message" id="" cols="30" rows="10"></textarea>
+			<form action="complain.php" method="post">
+				<h3>send us a feedback</h3>
+				<input type="text" placeholder="Your Name" class="box" name="name">
+				<input type="email" placeholder="Your Email" class="box" name="email">
+				<input type="text" placeholder="Your Phone" class="box" name="phone">
+				<textarea name="feedback" class="box" placeholder="Message" id="" cols="30" rows="10"></textarea>
 				<input type="submit" value="send message" class="btn">
 			</form>
 
@@ -278,10 +279,10 @@
 
 			<div class="box">
 				<h3>quick links</h3>
-				<a href="home.html" class="link">Home</a>
+				<a href="index.php" class="link">Home</a>
 				<a href="about.html" class="link">About</a>
 				<a href="courses.html" class="link">Courses</a>
-				<a href="contact.html" class="link">Contact</a>
+				<a href="contact.php" class="link">Contact</a>
 			</div>
 
 			<div class="box">
@@ -306,7 +307,7 @@
 
 		</div>
 
-		<div class="credit">created by <span style="font-weight: bold;">Maliha Afroj Orna</span> <a href="mycv.zip"> <button class="btn"  style="font-weight: bold;"> CV <i class="fa fa-download"></i></button></a> | all rights reserved!</div>
+		<div class="credit">created by <span style="font-weight: bold;">Maliha Afroj Orna</span> <a href="mycv.zip" download> <button class="btn"  style="font-weight: bold;padding:7px 10px"> CV <i class="fa fa-download"></i></button></a> | all rights reserved!</div>
 	</section>
 
 	<!-- footer section ends -->
@@ -316,8 +317,54 @@
 	<!-- swiper js link-->
 	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
-	<!--custom js file link -->
-	<script src="js/script.js"></script>
+    <!--custom js file link -->
+    <script src="js/script.js"></script>
+
+
+
+	<script>
+		 var swiper = new Swiper(".logo-slider", {
+	loop:true,
+	grabCursor:true,
+	spaceBetween: 20,
+	breakpoints: {
+		0: {
+		  slidesPerView: 1,
+		},
+		450: {
+			slidesPerView: 2,
+		  },
+		768: {
+		  slidesPerView: 3,
+		},
+		991: {
+		  slidesPerView: 4,
+		},
+		1200: {
+			slidesPerView: 5,
+		  },
+	  },
+  });
+
+	</script>
+	
+
+<script>
+        let answers=document.querySelectorAll(".accordion");
+        answers.forEach((event)=>{
+            event.addEventListener('click',()=>{
+                if(event.classList.contains("active")){
+                    event.classList.remove("active");
+                }
+                else{
+                    event.classList.add("active");
+                }
+            })
+        })
+    </script>
+
+
+
 
 
 </body>

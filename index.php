@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -5,6 +8,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Home</title>
+	<link rel="icon" type="image/x-icon" href="house.png">
 
 	<!-- font awesome cnd link -->
 	<link rel="stylesheet" type="text/css"
@@ -13,8 +17,22 @@
 	<!-- swiper css link -->
 	<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 
+	<!-- bootstrap css -->
+	<link rel="stylesheet" href="file:///C:/xampp/htdocs/project/bootstrap-5.2.0-beta1-dist/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css">
+
+	<!-- bootstrap js-->
+	<script type="text/javascript" src="file:///C:/xampp/htdocs/project/bootstrap-5.2.0-beta1-dist/bootstrap-5.2.0-beta1-dist/js/bootstrap.min.js"></script>
+
 	<!-- custom css file link -->
 	<link rel="stylesheet" href="css/style.css">
+
+    <!-- banner -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+
+
+
 
 </head>
 
@@ -22,21 +40,50 @@
 
 
 	<!-- header section starts -->
-	<header class="header">
-		<a href="home.html" class="logo"><i class="fa-solid fa-user-graduate"></i>OnlineEdu<a>
+	<header style="background: #F1E1F5;" class="header">
+		<a href="index.php" class="logo"><i class="fa-solid fa-user-graduate"></i>OnlineEdu<a>
 
 				<nav class="navbar">
 					<div id="close-navbar" class="fas fa-times"></div>
-					<a href="home.html">Home</a>
+					<a href="index.php">Home</a>
 					<a href="about.html">About</a>
 					<a href="courses.html">Courses</a>
-					<a href="contact.html">Contact</a>
+					<a href="contact.php">Contact</a>
 				</nav>
 
 				<div class="icons">
-					<div id="account-btn" class="fa-solid fa-user-graduate"></div>
+
+                    <?php
+                    if(isset($_SESSION['email']))
+                    {
+                        ?>
+                        <?php
+                    }
+                    else
+                    {
+                        ?>
+
+                        <div id="account-btn" class="fa-solid fa-user-graduate"></div>
+                    <?php
+
+                    }
+                    ?>
+
+
 					<div id="menu-btn" class="fas fa-bars"></div>
+
+
+
 				</div>
+                <?php
+                if(isset($_SESSION['email']))
+                {
+                    ?>
+                    <h3><?php echo $_SESSION['email']?> </h3>
+                    <a class="btn btn-danger" style="margin-left: 10px" href="logout.php">Logout</a>
+                    <?php
+                }
+                ?>
 	</header>
 
 	<!-- account form section starts -->
@@ -47,13 +94,13 @@
 
 		<div class="buttons">
 			<span class="btn active login-btn">login</span>
-			<span class="btn register-btn">register</span>
+			<span class="btn register-btn" value="redirect">register</span>
 		</div>
 
-		<form class="login-form active" action="">
+		<form class="login-form active" action="login.php" method="post">
 			<h3>login now</h3>
-			<input type="email" placeholder="Enter Your Email" class="box" name="">
-			<input type="password" placeholder="Enter Your Password" class="box" name="">
+			<input type="email" placeholder="Enter Your Email" class="box" name="email">
+			<input type="password" placeholder="Enter Your Password" class="box" name="password">
 			<div class="flex">
 				<input type="checkbox" name="" id="remember-me">
 				<label for="remember-me">Remember me</label>
@@ -62,11 +109,11 @@
 			<input type="submit" value="login now" class="btn" name="">
 		</form>
 
-		<form class="register-form" action="">
+		<form class="register-form" action="registration.php" method="post">
 			<h3>register now</h3>
-			<input type="email" placeholder="Enter Your Email" class="box" name="">
-			<input type="password" placeholder="Enter Your Password" class="box" name="">
-			<input type="password" placeholder="Confirm Your Password" class="box" name="">
+			<input type="text" placeholder="Enter Your Name" class="box" name="name">
+			<input type="email" placeholder="Enter Your Email" class="box" name="email">
+			<input type="password" placeholder="Enter Your Password" class="box" name="password">
 
 			<input type="submit" value="register now" class="btn" name="">
 		</form>
@@ -95,7 +142,7 @@
 
 				<section class="swiper-slide slide" style="background: url(images/home-slide-2.jpg) no-repeat;">
 					<div class="content">
-						<h3>the best courses you will find here!</h3>
+						<h3>develop a passion for learning new things!</h3>
 						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut fugiat ipsa tempore corrupti
 							impedit laboriosam.</p>
 						<a href="courses.html" class="btn">get started</a>
@@ -181,6 +228,29 @@
 
 	<!-- subjects section ends -->
 
+    <!-- banner starts-->
+
+    <section style="background: url('banner.jpg');min-height: 30vh;display: flex;align-items: center;padding: 0 50px;" class="counter-up">
+        <div style="display: flex;width: 100%;height: 100%;align-items: center;color: white;flex-wrap:wrap;z-index: 2; justify-content: space-between" class="content">
+            <div style="width: calc(25% -30px);border-radius: 5px;display: flex;padding: 20px;align-items: center;justify-content: space-evenly;flex-direction: column;" class="box">
+                <div style="font-size: 50px;font-weight: 500;" class="counter">20,500</div>
+                <div style="font-size: 20px;font-weight: 400;color:#ccc;" class="text">Graduated Students</div>
+            </div>
+            <div  style="width: calc(25% -30px);border-radius: 5px;display: flex;padding: 20px;align-items: center;justify-content: space-evenly;flex-direction: column;" class="box">
+                <div style="font-size: 50px;font-weight: 500;" class="counter">1,240</div>
+                <div style="font-size: 20px;font-weight: 400;color:#ccc;" class="text">Expert Instructors</div>
+            </div>
+            <div style="width: calc(25% -30px);border-radius: 5px;display: flex;padding: 20px;align-items: center;justify-content: space-evenly;flex-direction: column;" class="box">
+                <div style="font-size: 50px;font-weight: 500;" class="counter">60,000</div>
+                <div style="font-size: 20px;font-weight: 400;color:#ccc;" class="text">Books in our library</div>
+            </div>
+            <div  style="width: calc(25% -30px);border-radius: 5px;display: flex;padding: 20px;align-items: center;justify-content: space-evenly;flex-direction: column;"class="box">
+                <div style="font-size: 50px;font-weight: 500;" class="counter">15,000</div>
+                <div style="font-size: 20px;font-weight: 400;color:#ccc;" class="text">Students get employed</div>
+            </div>
+        </div>
+    </section>
+    <!-- banner ends -->
 
 
 
@@ -188,7 +258,7 @@
 
 	<section class="home-courses">
 
-		<h1 class="heading">our popular courses</h1>
+		<h1 class="heading">Our Trending Courses</h1>
 
 		<div class="swiper home-courses-slider">
 			<div class="swiper-wrapper">
@@ -208,10 +278,10 @@
 				<div class="swiper-slide slide">
 					<div class="image">
 						<img src="images/course-1-2.png" alt="">
-						<h3>web development</h3>
+						<h3>graphic design</h3>
 					</div>
 					<div class="content">
-						<h3>web development</h3>
+						<h3>graphic design</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, eaque?</p>
 						<a href="courses.html" class="btn">read more</a>
 					</div>
@@ -220,10 +290,10 @@
 				<div class="swiper-slide slide">
 					<div class="image">
 						<img src="images/course-1-3.png" alt="">
-						<h3>web development</h3>
+						<h3>mathematics</h3>
 					</div>
 					<div class="content">
-						<h3>web development</h3>
+						<h3>mathematics</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, eaque?</p>
 						<a href="courses.html" class="btn">read more</a>
 					</div>
@@ -232,10 +302,10 @@
 				<div class="swiper-slide slide">
 					<div class="image">
 						<img src="images/course-1-4.png" alt="">
-						<h3>web development</h3>
+						<h3>engineering</h3>
 					</div>
 					<div class="content">
-						<h3>web development</h3>
+						<h3>engineering</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, eaque?</p>
 						<a href="courses.html" class="btn">read more</a>
 					</div>
@@ -244,10 +314,10 @@
 				<div class="swiper-slide slide">
 					<div class="image">
 						<img src="images/course-1-5.png" alt="">
-						<h3>web development</h3>
+						<h3>teaching</h3>
 					</div>
 					<div class="content">
-						<h3>web development</h3>
+						<h3>teaching</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, eaque?</p>
 						<a href="courses.html" class="btn">read more</a>
 					</div>
@@ -256,10 +326,10 @@
 				<div class="swiper-slide slide">
 					<div class="image">
 						<img src="images/course-1-6.png" alt="">
-						<h3>web development</h3>
+						<h3>business</h3>
 					</div>
 					<div class="content">
-						<h3>web development</h3>
+						<h3>business</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, eaque?</p>
 						<a href="courses.html" class="btn">read more</a>
 					</div>
@@ -293,10 +363,10 @@
 
 			<div class="box">
 				<h3>quick links</h3>
-				<a href="home.html" class="link">Home</a>
+				<a href="index.php" class="link">Home</a>
 				<a href="about.html" class="link">About</a>
 				<a href="courses.html" class="link">Courses</a>
-				<a href="contact.html" class="link">Contact</a>
+				<a href="contact.php" class="link">Contact</a>
 			</div>
 
 			<div class="box">
@@ -321,8 +391,9 @@
 
 		</div>
 
-		<div class="credit">created by <span style="font-weight: bold;">Maliha Afroj Orna</span> <a href="mycv.zip"> <button class="btn"  style="font-weight: bold;"> CV <i class="fa fa-download"></i></button></a> | all rights reserved!</div>
-	</section>
+		<div class="credit">created by <span style="font-weight: bold;">Maliha Afroj Orna</span> <a href="mycv.zip" download> <button class="btn"  style="font-weight: bold;padding:7px 10px"> CV <i class="fa fa-download"></i></button></a> | all rights reserved!</div>
+
+    </section>
 
 	<!-- footer section ends -->
 
@@ -336,6 +407,46 @@
 	<!--custom js file link -->
 	<script src="js/script.js"></script>
 
+<!-- banner -->
+    <script>
+        $(document).ready(function(){
+            $('.counter').counterUp({
+                delay: 60,
+                time: 1200
+            });
+        });
+    </script>
+
+<script>
+    var swiper = new Swiper(".home-slider", {
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        loop:true,
+        grabCursor:true,
+    });
+
+</script>
+
+<script>
+    var swiper = new Swiper(".home-courses-slider", {
+        loop:true,
+        grabCursor:true,
+        spaceBetween: 20,
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            },
+            991: {
+                slidesPerView: 3,
+            },
+        },
+    });
+</script>
 
 </body>
 

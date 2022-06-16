@@ -370,7 +370,16 @@ section {
 	}
 }
 
-
+//banner
+@media (max-width: 1036px){
+	.counter-up{
+		padding: 50px 50px 0 50px;
+	}
+	.counter .box{
+		width: calc(50% -30px);
+		margin-bottom: 50px;
+	}
+}
 
 //home-courses section starts
 
