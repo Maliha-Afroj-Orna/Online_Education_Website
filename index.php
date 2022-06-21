@@ -44,11 +44,11 @@ session_start();
 		<a href="index.php" class="logo"><i class="fa-solid fa-user-graduate"></i>OnlineEdu<a>
 
 				<nav class="navbar">
-					<div id="close-navbar" class="fas fa-times"></div>
 					<a href="index.php">Home</a>
 					<a href="about.html">About</a>
 					<a href="courses.html">Courses</a>
 					<a href="contact.php">Contact</a>
+					<a href="http://localhost/project/admin.php">Admin</a>
 				</nav>
 
 				<div class="icons">

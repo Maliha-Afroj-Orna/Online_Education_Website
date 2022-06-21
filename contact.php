@@ -32,6 +32,7 @@
 					<a href="about.html">About</a>
 					<a href="courses.html">Courses</a>
 					<a href="contact.php">Contact</a>
+					<a href="http://localhost/project/admin.php">Admin</a>
 				</nav>
 
 				<div class="icons">
