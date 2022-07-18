@@ -44,6 +44,7 @@ session_start();
 		<a href="index.php" class="logo"><i class="fa-solid fa-user-graduate"></i>OnlineEdu<a>
 
 				<nav class="navbar">
+					<div id="close-navbar" class="fas fa-times"></div>
 					<a href="index.php">Home</a>
 					<a href="about.html">About</a>
 					<a href="courses.html">Courses</a>
@@ -408,6 +409,38 @@ session_start();
 	<script src="js/script.js"></script>
 
 <!-- banner -->
+ <script>
+	let navbar = document.querySelector('.header .navbar')
+
+document.querySelector('#menu-btn').onclick = () => {
+	navbar.classList.add('active');
+}
+
+document.querySelector('#close-navbar').onclick = () =>{
+	navbar.classList.add('active');
+}
+
+ </script>
+
+ <script>
+	let registerBtn = document.querySelector('.account-form .register-btn');
+let loginBtn = document.querySelector('.account-form .login-btn');
+
+registerBtn.onclick = () =>{
+	registerBtn.classList.add('active');
+	loginBtn.classList.remove('active');
+	document.querySelector('.account-form .login-form').classList.remove('active');
+	document.querySelector('.account-form .register-form').classList.add('active');
+};
+loginBtn.onclick = () =>{
+	registerBtn.classList.remove('active');
+	loginBtn.classList.add('active');
+	document.querySelector('.account-form .login-form').classList.add('active');
+	document.querySelector('.account-form .register-form').classList.remove('active');
+};
+
+ </script>
+
     <script>
         $(document).ready(function(){
             $('.counter').counterUp({
